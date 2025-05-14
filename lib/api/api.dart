@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:app/models/post_model.dart';
 import 'package:http/http.dart' as http;
 
-class Api {
+ class Api {
   Future<List<PostModel>> getAllPost() async {
     try {
       http.Response response = await http.get(
@@ -19,6 +19,8 @@ class Api {
         for (var n in json) {
           list.add(PostModel.fromJson(n));
         }
+
+        return list;
       } else {
         print("getAllRows: StatusCode ${response.statusCode}");
         return [];
@@ -28,4 +30,6 @@ class Api {
         return [];
     }
   }
+
+  
 }
